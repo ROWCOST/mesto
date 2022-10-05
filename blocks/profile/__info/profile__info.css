@@ -9,3 +9,10 @@
         "title edit"
         "job job";
 }
+
+@media screen and (max-width: 768px) {
+    .profile__info {
+        column-gap: 10px;
+        row-gap: 8px;
+    }
+}

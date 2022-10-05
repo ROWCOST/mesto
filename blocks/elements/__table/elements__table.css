@@ -10,3 +10,15 @@
     align-items: stretch;
     list-style: none;
 }
+
+@media screen and (max-width: 880px) {
+    .elements__table {
+        grid-template-columns: repeat(2, minmax(282px, 50%));
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .elements__table {
+        grid-template-columns: minmax(282px, 100%);
+    }
+}
