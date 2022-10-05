@@ -1,17 +1,23 @@
-# Проект: Место
+# Проектная работа - Mesto Россия
+------
+## Описание проекта:
 
-### Обзор
+Проектная работа третьего спринта Яндекс.Практикума на основе [макета](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 
-* Figma
-* Картинки
+------
+### Используемые технологии:
 
-**Figma**
-
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
-
-**Картинки**
-
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
-
-Удачи!
+1. HTML
+2. CSS:
+* Flexbox;
+* Grid Layout;
+* и д.р;
+3. JavaScript
+4. Figma
+5. Editorconfig
+------
+### Cсылка на проект:
+Github Pages: https://rowcost.github.io/mesto/index.html
+### Запуск проекта:
+* Открыть **index.html** из корневой папки проекта в браузере.
+* Открыть в VSC с помощью плагина Live Server.
