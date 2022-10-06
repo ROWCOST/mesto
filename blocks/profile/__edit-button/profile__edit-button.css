@@ -5,14 +5,14 @@
     grid-area: "edit";
     margin-left: 18px;
     padding: 0;
+    background: transparent;
     background: url(../../../images/profile/profile__edit-button.svg);
     background-repeat: no-repeat;
     background-position: center;
-    border: 2px solid #FFF;
+    border: 1px solid #FFF;
     cursor: pointer;
     position: relative;
     transition: opacity 0.3s linear;
-    background-color: #000;
 }
 
 .profile__edit-button:hover {

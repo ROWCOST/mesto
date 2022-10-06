@@ -27,7 +27,6 @@ popup.addEventListener("click", (event) => {
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
-    console.log('HI');
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
     popup.classList.remove(POPUP_ACTIVE_CLASS);

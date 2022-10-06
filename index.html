@@ -18,10 +18,10 @@
             <img class="profile__avatar" src="./images/profile/profile__avatar.jpg" alt="Фотография Жак-Ив Кусто">
             <div class="profile__info">
                 <h1 class="profile__title">Жак-Ив Кусто</h1>
-                <button class="profile__edit-button" type="button"></button>
+                <button class="profile__edit-button" aria-label="Edit" type="button"></button>
                 <p class="profile__job">Исследователь океана</p>
             </div>
-            <button class="profile__add-button" type="button"></button>
+            <button class="profile__add-button" aria-label="Add" type="button"></button>
         </section>
         <section class="elements">
             <ul class="elements__table">
@@ -29,35 +29,35 @@
                     <img class="element__image" src="./images/elements/element__image_karachaevsk.png" alt="Карачаевск">
                     <div class="element__info">
                         <h2 class="element__title">Карачаевск</h2>
-                        <button class="element__like-button" type="button"></button>
+                        <button class="element__like-button" aria-label="Like" type="button"></button>
                     </div>
                 </li>
                 <li class="element">
                     <img class="element__image" src="./images/elements/element__image_elbrus.png" alt="Гора Эльбрус">
                     <div class="element__info">
                         <h2 class="element__title">Гора Эльбрус</h2>
-                        <button class="element__like-button" type="button"></button>
+                        <button class="element__like-button" aria-label="Like" type="button"></button>
                     </div>
                 </li>
                 <li class="element">
                     <img class="element__image" src="./images/elements/element__image_dombay.png" alt="Домбай">
                     <div class="element__info">
                         <h2 class="element__title">Домбай</h2>
-                        <button class="element__like-button" type="button"></button>
+                        <button class="element__like-button" aria-label="Like" type="button"></button>
                     </div>
                 </li>
                 <li class="element">
                     <img class="element__image" src="./images/elements/element__image_elbrus.png" alt="Гора Эльбрус">
                     <div class="element__info">
                         <h2 class="element__title">Гора Эльбрус</h2>
-                        <button class="element__like-button" type="button"></button>
+                        <button class="element__like-button" aria-label="Like" type="button"></button>
                     </div>
                 </li>
                 <li class="element">
                     <img class="element__image" src="./images/elements/element__image_dombay.png" alt="Домбай">
                     <div class="element__info">
                         <h2 class="element__title">Домбай</h2>
-                        <button class="element__like-button" type="button"></button>
+                        <button class="element__like-button" aria-label="Like" type="button"></button>
                     </div>
                 </li>
                 <li class="element">
@@ -65,7 +65,7 @@
                         alt="Карачаево-Черкесия">
                     <div class="element__info">
                         <h2 class="element__title">Карачаево-Черкесия</h2>
-                        <button class="element__like-button" type="button"></button>
+                        <button class="element__like-button" aria-label="Like" type="button"></button>
                     </div>
                 </li>
             </ul>
@@ -76,13 +76,13 @@
     </footer>
     <div class="popup">
         <div class="popup__container">
-            <button id="popup__close" class="popup__close-button" type="button"></button>
+            <button id="popup__close" class="popup__close-button" aria-label="Close" type="button"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
             <form name="profile_edit" class="popup__form" id="profile_edit" action="#">
                 <fieldset class="popup__fieldset">
                     <input name="input_name" class="popup__input popup__input_content_name" placeholder="Имя">
                     <input name="input_job" class="popup__input popup__input_content_job" placeholder="Профессия">
-                    <button name="profile_save" class="popup__save-button" type="submit">Сохранить</button>
+                    <button name="profile_save" class="popup__save-button" aria-label="Save" type="submit">Сохранить</button>
                 </fieldset>
             </form>
         </div>

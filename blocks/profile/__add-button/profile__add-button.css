@@ -1,8 +1,8 @@
 .profile__add-button {
     width: 150px;
     height: 50px;
+    background: transparent;
     background-image: url(../../../images/profile/profile__add-button.svg);
-    background-color: #000;
     background-position: center;
     background-repeat: no-repeat;
     border: 2px solid #FFFFFF;
