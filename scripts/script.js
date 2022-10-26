@@ -1,33 +1,145 @@
-const POPUP_ACTIVE_CLASS = 'popup_active';
+const popupProfileEdit = document.querySelector('.popup_type_profile-edit');
+const popupPlace = document.querySelector('.popup_type_new-place');
+const popupImageView = document.querySelector('.popup_type_image');
 
-const openPopupBtn = document.querySelector('.profile__edit-button');
+const popupImage = popupImageView.querySelector('.popup__image');
+const popupImageCaption = popupImageView.querySelector('.popup__image-caption');
 
-const popup = document.querySelector('.popup');
-const popupContent = popup.querySelector('.popup__container');
-const form = popup.querySelector('.popup__form');
-
-const profileName = document.querySelector('.profile__title');
-const profileJob = document.querySelector('.profile__job');
 const nameInput = document.querySelector('.popup__input_content_name');
 const jobInput = document.querySelector('.popup__input_content_job');
 
-const closePopupBtn = popup.querySelector('.popup__close-button');
+const profileName = document.querySelector('.profile__title');
+const profileJob = document.querySelector('.profile__job');
 
-openPopupBtn.addEventListener("click", () => {
-    popup.classList.add(POPUP_ACTIVE_CLASS);
-    nameInput.value = profileName.textContent;
-    jobInput.value = profileJob.textContent;
-});
+const placeName = popupPlace.querySelector('.popup__input_content_place_name');
+const imageUrl = popupPlace.querySelector('.popup__input_content_image_link');
 
-popup.addEventListener("click", (event) => {
-    if (!popupContent.contains(event.target) || event.target === closePopupBtn) {
-        popup.classList.remove(POPUP_ACTIVE_CLASS);
+const buttonEditProfile = document.querySelector('.profile__edit-button');
+const buttonEditProfileSubmit = popupProfileEdit.querySelector('.popup__save-button');
+
+const buttonAddPlace = document.querySelector('.profile__add-button');
+const buttonAddPlaceSubmit = popupPlace.querySelector('.popup__save-button');
+
+const formEdit = document.forms['profile_edit'];
+const formPlace = document.forms['new-place'];
+
+const popups = document.querySelectorAll('.popup');
+const popupInputFields = document.querySelectorAll('.popup__input')
+
+const cardTemplate = document.querySelector('#elementTemplate').content;
+const cardsContainer = document.querySelector('.elements__table');
+
+function openPopup(popup) {
+  popup.classList.add('popup_active');
+  document.addEventListener('keydown', сloseOnEscape);
+}
+
+function closePopup(popup) {
+  popup.classList.remove('popup_active');
+  document.removeEventListener('keydown', сloseOnEscape);
+}
+
+function сloseOnEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_active');
+    closePopup(openedPopup);
+  }
+}
+
+popups.forEach(popup => {
+  popup.addEventListener('mousedown', evt => {
+    if (evt.target.classList.contains('popup_active') || evt.target.classList.contains('popup__close-button')) {
+      closePopup(popup);
     }
+  });
 });
 
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;
-    popup.classList.remove(POPUP_ACTIVE_CLASS);
-});
+function openEditPopup() {
+  openPopup(popupProfileEdit);
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
+}
+
+function openPlacePopup() {
+  openPopup(popupPlace);
+  formPlace.reset();
+}
+
+function openImage(image, caption) {
+  openPopup(popupImageView);
+  popupImage.src = image;
+  popupImage.alt = `Изображение ${caption}`;
+  popupImageCaption.textContent = caption;
+}
+
+function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
+  closePopup(popupProfileEdit);
+}
+
+function handlePlaceFormSubmit(evt) {
+  evt.preventDefault();
+  renderCard({ name: placeName.value, link: imageUrl.value });
+  evt.target.reset();
+  closePopup(popupPlace);
+}
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+function createCard(name, link) {
+  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+  const cardElementImage = cardElement.querySelector('.element__image');
+
+  const cardRemoveButton = cardElement.querySelector('.element__remove-button');
+  const likeButton = cardElement.querySelector('.element__like-button');
+
+  cardElementImage.src = link;
+  cardElementImage.alt = `Изображение ${name}`;
+  cardElement.querySelector('.element__title').textContent = name;
+
+  cardElementImage.addEventListener('click', () => openImage(link, name));
+  cardRemoveButton.addEventListener('click', () => cardElement.remove());
+  likeButton.addEventListener('click', () => likeButton.classList.toggle('element__like-button_active'));
+
+  return cardElement;
+}
+
+function renderCard(name, link) {
+  const cardElement = createCard(name, link);
+  cardsContainer.prepend(cardElement);
+}
+
+buttonEditProfile.addEventListener('click', openEditPopup);
+buttonAddPlace.addEventListener('click', openPlacePopup);
+
+formEdit.addEventListener('submit', handleProfileFormSubmit);
+formPlace.addEventListener('submit', handlePlaceFormSubmit);
+
+initialCards.forEach((item) => renderCard(item));
