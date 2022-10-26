@@ -11,8 +11,8 @@ const jobInput = document.querySelector('.popup__input_content_job');
 const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__job');
 
-const placeName = popupPlace.querySelector('.popup__input_content_place_name');
-const imageUrl = popupPlace.querySelector('.popup__input_content_image_link');
+const placeName = popupPlace.querySelector('.popup__input_content_place');
+const imageUrl = popupPlace.querySelector('.popup__input_content_link');
 
 const buttonEditProfile = document.querySelector('.profile__edit-button');
 const buttonEditProfileSubmit = popupProfileEdit.querySelector('.popup__save-button');
@@ -24,7 +24,6 @@ const formEdit = document.forms['profile_edit'];
 const formPlace = document.forms['new-place'];
 
 const popups = document.querySelectorAll('.popup');
-const popupInputFields = document.querySelectorAll('.popup__input')
 
 const cardTemplate = document.querySelector('#elementTemplate').content;
 const cardsContainer = document.querySelector('.elements__table');
@@ -79,10 +78,11 @@ function handleProfileFormSubmit(evt) {
   closePopup(popupProfileEdit);
 }
 
-function handlePlaceFormSubmit(evt) {
+function placeFormSubmitHandler(evt) {
   evt.preventDefault();
-  renderCard({ name: placeName.value, link: imageUrl.value });
-  evt.target.reset();
+  renderCard(placeName.value, imageUrl.value);
+  placeName.value = '';
+  imageUrl.value = '';
   closePopup(popupPlace);
 }
 
@@ -140,6 +140,6 @@ buttonEditProfile.addEventListener('click', openEditPopup);
 buttonAddPlace.addEventListener('click', openPlacePopup);
 
 formEdit.addEventListener('submit', handleProfileFormSubmit);
-formPlace.addEventListener('submit', handlePlaceFormSubmit);
+formPlace.addEventListener('submit', placeFormSubmitHandler);
 
-initialCards.forEach((item) => renderCard(item));
+initialCards.forEach((item) => renderCard(item.name, item.link));
