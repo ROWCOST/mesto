@@ -78,7 +78,7 @@ function handleProfileFormSubmit(evt) {
   closePopup(popupProfileEdit);
 }
 
-function placeFormSubmitHandler(evt) {
+function handlePlaceFormSubmit(evt) {
   evt.preventDefault();
   renderCard(placeName.value, imageUrl.value);
   placeName.value = '';
@@ -140,6 +140,6 @@ buttonEditProfile.addEventListener('click', openEditPopup);
 buttonAddPlace.addEventListener('click', openPlacePopup);
 
 formEdit.addEventListener('submit', handleProfileFormSubmit);
-formPlace.addEventListener('submit', placeFormSubmitHandler);
+formPlace.addEventListener('submit', handlePlaceFormSubmit);
 
 initialCards.forEach((item) => renderCard(item.name, item.link));
