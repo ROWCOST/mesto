@@ -30,15 +30,15 @@ const cardsContainer = document.querySelector('.elements__table');
 
 function openPopup(popup) {
   popup.classList.add('popup_active');
-  document.addEventListener('keydown', сloseOnEscape);
+  document.addEventListener('keydown', closeOnEscape);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_active');
-  document.removeEventListener('keydown', сloseOnEscape);
+  document.removeEventListener('keydown', closeOnEscape);
 }
 
-function сloseOnEscape(evt) {
+function closeOnEscape(evt) {
   if (evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_active');
     closePopup(openedPopup);
