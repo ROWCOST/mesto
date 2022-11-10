@@ -47,12 +47,12 @@
       <h3 class="popup__title">Редактировать профиль</h3>
       <form name="profile_edit" class="popup__form" id="profile_edit" action="#" novalidate>
         <fieldset class="popup__fieldset">
-          <input name="input_name" class="popup__input popup__input_content_name" placeholder="Имя" type="text"
+          <input name="name-field" class="popup__input popup__input_content_name-field" placeholder="Имя" type="text"
             minlength="2" maxlength="40" required>
-          <span class="popup__form-input-error popup__form-input-error_content_name-field"></span>
-          <input name="input_job" class="popup__input popup__input_content_job" placeholder="Профессия" type="text"
+            <span class="popup__form-input-error popup__form-input-error_content_name-field"></span>
+          <input name="job-field" class="popup__input popup__input_content_job-field" placeholder="Профессия" type="text"
             minlength="2" maxlength="200" required>
-          <span class="popup__form-input-error popup__form-input_error_content_job-field"></span>
+            <span class="popup__form-input-error popup__form-input-error_content_job-field"></span>
           <button name="profile_save" class="popup__save-button" aria-label="Save" type="submit">Сохранить</button>
         </fieldset>
       </form>
@@ -60,17 +60,17 @@
   </div>
   <div class="popup popup_type_new-place">
     <div class="popup__container popup__container_type_new-place">
-      <button id="popup__close" class="popup__close-button" aria-label="Close" type="button"></button>
+      <button id="popup__close-place" class="popup__close-button" aria-label="Close" type="button"></button>
       <h3 class="popup__title">Новое место</h3>
-      <form name="new-place" class="popup__form" id="new-place" action="#" novalidate>
+      <form name="new-place" class="popup__form" id="new_place" action="#" novalidate>
         <fieldset class="popup__fieldset">
-          <input name="input_place" class="popup__input popup__input_content_place" placeholder="Название" type="text"
+          <input name="place-name" class="popup__input popup__input_content_place-name" placeholder="Название" type="text"
             minlength="2" maxlength="30" required>
-          <span class="popup__form-input-error popup__form-input-error_content_place-field"
-          <input name="input_link" class="popup__input popup__input_content_link" placeholder="Ссылка на картинку"
+            <span class="popup__form-input-error popup__form-input-error_content_place-name"></span>
+          <input name="image-url" class="popup__input popup__input_content_image-url" placeholder="Ссылка на картинку"
             type="url" required>
-          <span class="popup__form-input-error popup__form-input-error_content_image-link"></span>
-          <button name="new-place_save" class="popup__save-button" aria-label="Add" type="submit">Создать</button>
+            <span class="popup__form-input-error popup__form-input-error_content_image-url"></span>
+          <button name="place_create" class="popup__save-button" aria-label="Add" type="submit">Создать</button>
         </fieldset>
       </form>
     </div>
