@@ -10,7 +10,6 @@ function showInputError(formElement, inputElement, errorMessage, settings) {
   const errorElement = formElement.querySelector(`.popup__form-input-error_content_${inputElement.id}`);
   errorElement.textContent = errorMessage;
   inputElement.classList.add(settings.inputErrorClass);
-
 }
 
 function hideInputError(formElement, inputElement, settings) {

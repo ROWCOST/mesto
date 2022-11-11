@@ -5,14 +5,14 @@ const popupImageView = document.querySelector('.popup_type_image');
 const popupImage = popupImageView.querySelector('.popup__image');
 const popupImageCaption = popupImageView.querySelector('.popup__image-caption');
 
-const nameInput = document.querySelector('.popup__input_content_name');
-const jobInput = document.querySelector('.popup__input_content_job');
+const nameInput = document.querySelector('.popup__input_content_name-field');
+const jobInput = document.querySelector('.popup__input_content_job-field');
 
 const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__job');
 
-const placeName = popupPlace.querySelector('.popup__input_content_place');
-const imageUrl = popupPlace.querySelector('.popup__input_content_link');
+const placeName = popupPlace.querySelector('.popup__input_content_place-name');
+const imageUrl = popupPlace.querySelector('.popup__input_content_image-url');
 
 const buttonEditProfile = document.querySelector('.profile__edit-button');
 const buttonEditProfileSubmit = popupProfileEdit.querySelector('.popup__save-button');
@@ -59,7 +59,7 @@ function openEditPopup() {
   openPopup(popupProfileEdit);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  toggleButtonState({ validity: { valid: true } }, buttonEditProfileSubmit, validateSettings);
+  enableSubmitButton(buttonEditProfileSubmit);
   disableErrorMessages();
   disableErrorInput(popupInputFields);
 }
@@ -67,7 +67,7 @@ function openEditPopup() {
 function openPlacePopup() {
   openPopup(popupPlace);
   formPlace.reset();
-  toggleButtonState(popupInputFields, buttonAddPlaceSubmit, validateSettings);
+  disableSubmitButton(buttonAddPlaceSubmit);
   disableErrorMessages();
   disableErrorInput(popupInputFields);
 }

@@ -47,10 +47,10 @@
       <h3 class="popup__title">Редактировать профиль</h3>
       <form name="profile_edit" class="popup__form" id="profile_edit" action="#" novalidate>
         <fieldset class="popup__fieldset">
-          <input name="name-field" class="popup__input popup__input_content_name-field" placeholder="Имя" type="text"
+          <input id="name-field" name="name_field" class="popup__input popup__input_content_name-field" placeholder="Имя" type="text"
             minlength="2" maxlength="40" required>
             <span class="popup__form-input-error popup__form-input-error_content_name-field"></span>
-          <input name="job-field" class="popup__input popup__input_content_job-field" placeholder="Профессия" type="text"
+          <input id="job-field" name="job_field"  class="popup__input popup__input_content_job-field" placeholder="Профессия" type="text"
             minlength="2" maxlength="200" required>
             <span class="popup__form-input-error popup__form-input-error_content_job-field"></span>
           <button name="profile_save" class="popup__save-button" aria-label="Save" type="submit">Сохранить</button>
@@ -64,10 +64,10 @@
       <h3 class="popup__title">Новое место</h3>
       <form name="new-place" class="popup__form" id="new_place" action="#" novalidate>
         <fieldset class="popup__fieldset">
-          <input name="place-name" class="popup__input popup__input_content_place-name" placeholder="Название" type="text"
+          <input id="place-name" name="place_name" class="popup__input popup__input_content_place-name" placeholder="Название" type="text"
             minlength="2" maxlength="30" required>
             <span class="popup__form-input-error popup__form-input-error_content_place-name"></span>
-          <input name="image-url" class="popup__input popup__input_content_image-url" placeholder="Ссылка на картинку"
+          <input id="image-url" name="image_url" class="popup__input popup__input_content_image-url" placeholder="Ссылка на картинку"
             type="url" required>
             <span class="popup__form-input-error popup__form-input-error_content_image-url"></span>
           <button name="place_create" class="popup__save-button" aria-label="Add" type="submit">Создать</button>
