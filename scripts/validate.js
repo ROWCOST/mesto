@@ -1,3 +1,5 @@
+const errorMessages = document.querySelectorAll('.popup__form-input-error');
+
 const validateSettings = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -16,6 +18,24 @@ function hideInputError(formElement, inputElement, settings) {
   const errorElement = formElement.querySelector(`.popup__form-input-error_content_${inputElement.id}`);
   errorElement.textContent = "";
   inputElement.classList.remove(settings.inputErrorClass);
+}
+
+function enableSubmitButton(buttonElement) {
+  buttonElement.removeAttribute('disabled');
+  buttonElement.classList.remove('popup__save-button_disabled');
+}
+
+function disableSubmitButton(buttonElement) {
+  buttonElement.setAttribute('disabled', true);
+  buttonElement.classList.add('popup__save-button_disabled');
+}
+
+function disableErrorMessages() {
+  errorMessages.forEach(validMessage => validMessage.textContent = "");
+}
+
+function disableErrorInput(inputErrors) {
+  inputErrors.forEach(inputError => inputError.classList.remove('popup__input_error'));
 }
 
 function checkInputValidity(formElement, inputElement, settings) {
@@ -57,9 +77,6 @@ function setEventListeners(formElement, settings) {
 function enableValidation(settings) {
   const formList = Array.from(document.querySelectorAll(settings.formSelector));
   formList.forEach((formElement) => {
-    formElement.addEventListener('submit', evt => {
-      evt.preventDefault();
-    });
     setEventListeners(formElement, settings);
   });
 }

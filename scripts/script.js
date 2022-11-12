@@ -24,7 +24,6 @@ const formEdit = document.forms['profile_edit'];
 const formPlace = document.forms['new-place'];
 
 const popups = document.querySelectorAll('.popup');
-const errorMessages = document.querySelectorAll('.popup__form-input-error');
 const popupInputFields = document.querySelectorAll('.popup__input')
 
 const cardTemplate = document.querySelector('#elementTemplate').content;
@@ -89,26 +88,7 @@ function handleProfileFormSubmit(evt) {
 function handlePlaceFormSubmit(evt) {
   evt.preventDefault();
   renderCard(placeName.value, imageUrl.value);
-  evt.target.reset();
   closePopup(popupPlace);
-}
-
-function enableSubmitButton(buttonElement) {
-  buttonElement.removeAttribute('disabled');
-  buttonElement.classList.remove('popup__save-button_disabled');
-}
-
-function disableSubmitButton(buttonElement) {
-  buttonElement.setAttribute('disabled', true);
-  buttonElement.classList.add('popup__save-button_disabled');
-}
-
-function disableErrorMessages() {
-  errorMessages.forEach(validMessage => validMessage.textContent = "");
-}
-
-function disableErrorInput(inputErrors) {
-  inputErrors.forEach(inputError => inputError.classList.remove('popup__input_error'));
 }
 
 const initialCards = [
