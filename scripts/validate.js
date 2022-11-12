@@ -1,5 +1,3 @@
-const errorMessages = document.querySelectorAll('.popup__form-input-error');
-
 const validateSettings = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -20,24 +18,6 @@ function hideInputError(formElement, inputElement, settings) {
   inputElement.classList.remove(settings.inputErrorClass);
 }
 
-function enableSubmitButton(buttonElement) {
-  buttonElement.removeAttribute('disabled');
-  buttonElement.classList.remove('popup__save-button_disabled');
-}
-
-function disableSubmitButton(buttonElement) {
-  buttonElement.setAttribute('disabled', true);
-  buttonElement.classList.add('popup__save-button_disabled');
-}
-
-function disableErrorMessages() {
-  errorMessages.forEach(validMessage => validMessage.textContent = "");
-}
-
-function disableErrorInput(inputErrors) {
-  inputErrors.forEach(inputError => inputError.classList.remove('popup__input_error'));
-}
-
 function checkInputValidity(formElement, inputElement, settings) {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage, settings);
@@ -54,11 +34,11 @@ function hasInvalidInput(inputList) {
 
 function toggleButtonState(inputList, buttonElement, settings) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(settings.inactiveButtonClass);
     buttonElement.setAttribute('disabled', true);
+    buttonElement.classList.add(settings.inactiveButtonClass);
   } else {
-    buttonElement.classList.remove(settings.inactiveButtonClass);
     buttonElement.removeAttribute('disabled')
+    buttonElement.classList.remove(settings.inactiveButtonClass);
   }
 }
 

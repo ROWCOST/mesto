@@ -58,7 +58,7 @@ function openEditPopup() {
   openPopup(popupProfileEdit);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  enableSubmitButton(buttonEditProfileSubmit);
+  toggleButtonState({validity: {valid: true}},buttonEditProfileSubmit,validateSettings);
   disableErrorMessages();
   disableErrorInput(popupInputFields);
 }
@@ -66,7 +66,7 @@ function openEditPopup() {
 function openPlacePopup() {
   openPopup(popupPlace);
   formPlace.reset();
-  disableSubmitButton(buttonAddPlaceSubmit);
+  toggleButtonState(popupInputFields,buttonAddPlaceSubmit,validateSettings);
   disableErrorMessages();
   disableErrorInput(popupInputFields);
 }
