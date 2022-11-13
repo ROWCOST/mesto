@@ -25,6 +25,7 @@ const formPlace = document.forms['new-place'];
 
 const popups = document.querySelectorAll('.popup');
 const popupInputFields = document.querySelectorAll('.popup__input')
+const errorMessages = document.querySelectorAll('.popup__form-input-error');
 
 const cardTemplate = document.querySelector('#elementTemplate').content;
 const cardsContainer = document.querySelector('.elements__table');

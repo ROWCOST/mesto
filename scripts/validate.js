@@ -27,9 +27,17 @@ function checkInputValidity(formElement, inputElement, settings) {
 }
 
 function hasInvalidInput(inputList) {
-  return inputList.some((inputElement) => {
+  return Array.from(inputList).some((inputElement) => {
     return !inputElement.validity.valid;
   })
+}
+
+function disableErrorMessages() {
+  errorMessages.forEach(validMessage => validMessage.textContent = "");
+}
+
+function disableErrorInput(inputErrors) {
+  inputErrors.forEach(inputError => inputError.classList.remove('popup__input_error'));
 }
 
 function toggleButtonState(inputList, buttonElement, settings) {
