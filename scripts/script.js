@@ -24,7 +24,8 @@ const formEdit = document.forms['profile_edit'];
 const formPlace = document.forms['new-place'];
 
 const popups = document.querySelectorAll('.popup');
-const popupInputFields = document.querySelectorAll('.popup__input')
+const popupInputFields = document.querySelectorAll('.popup__input');
+const errorMessages = document.querySelectorAll('.popup__form-input-error');
 
 const cardTemplate = document.querySelector('#elementTemplate').content;
 const cardsContainer = document.querySelector('.elements__table');
@@ -58,17 +59,17 @@ function openEditPopup() {
   openPopup(popupProfileEdit);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  buttonElement.removeAttribute('disabled'); 
-  buttonElement.classList.remove('popup__save-button_disabled'); 
-  disableErrorMessages();
-  disableErrorInput(popupInputFields);
+  buttonEditProfileSubmit.removeAttribute('disabled'); 
+  buttonEditProfileSubmit.classList.remove('popup__save-button_disabled'); 
+  disableErrorMessages(errorMessages);
 }
 
 function openPlacePopup() {
   openPopup(popupPlace);
   formPlace.reset();
-  disableErrorMessages();
-  disableErrorInput(popupInputFields);
+  buttonAddPlaceSubmit.setAttribute('disabled', true); 
+  buttonAddPlaceSubmit.classList.add('popup__save-button_disabled'); 
+  disableErrorMessages(errorMessages);
 }
 
 function openImage(image, caption) {

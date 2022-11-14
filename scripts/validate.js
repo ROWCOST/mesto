@@ -18,12 +18,8 @@ function hideInputError(formElement, inputElement, settings) {
   inputElement.classList.remove(settings.inputErrorClass);
 }
 
-function disableErrorMessages() {
-  validateSettings.inputSelector.forEach(validMessage => validMessage.textContent = "");
-}
-
-function disableErrorInput(inputErrors) {
-  inputErrors.forEach(inputError => inputError.classList.remove(settings.inputErrorClass));
+function disableErrorMessages(inputElement) {
+  inputElement.forEach(validMessage => validMessage.textContent = "");
 }
 
 function checkInputValidity(formElement, inputElement, settings) {
