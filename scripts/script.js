@@ -58,7 +58,8 @@ function openEditPopup() {
   openPopup(popupProfileEdit);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  enableSubmitButton(buttonEditProfileSubmit);
+  buttonElement.removeAttribute('disabled'); 
+  buttonElement.classList.remove('popup__save-button_disabled'); 
   disableErrorMessages();
   disableErrorInput(popupInputFields);
 }
@@ -66,7 +67,6 @@ function openEditPopup() {
 function openPlacePopup() {
   openPopup(popupPlace);
   formPlace.reset();
-  disableSubmitButton(buttonAddPlaceSubmit);
   disableErrorMessages();
   disableErrorInput(popupInputFields);
 }

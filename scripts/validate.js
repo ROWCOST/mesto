@@ -1,5 +1,3 @@
-const errorMessages = document.querySelectorAll('.popup__form-input-error');
-
 const validateSettings = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -20,22 +18,12 @@ function hideInputError(formElement, inputElement, settings) {
   inputElement.classList.remove(settings.inputErrorClass);
 }
 
-function enableSubmitButton(buttonElement) {
-  buttonElement.removeAttribute('disabled');
-  buttonElement.classList.remove('popup__save-button_disabled');
-}
-
-function disableSubmitButton(buttonElement) {
-  buttonElement.setAttribute('disabled', true);
-  buttonElement.classList.add('popup__save-button_disabled');
-}
-
 function disableErrorMessages() {
-  errorMessages.forEach(validMessage => validMessage.textContent = "");
+  validateSettings.inputSelector.forEach(validMessage => validMessage.textContent = "");
 }
 
 function disableErrorInput(inputErrors) {
-  inputErrors.forEach(inputError => inputError.classList.remove('popup__input_error'));
+  inputErrors.forEach(inputError => inputError.classList.remove(settings.inputErrorClass));
 }
 
 function checkInputValidity(formElement, inputElement, settings) {
