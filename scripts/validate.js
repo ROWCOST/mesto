@@ -18,6 +18,16 @@ function hideInputError(formElement, inputElement, settings) {
   inputElement.classList.remove(settings.inputErrorClass);
 }
 
+function disableSubmitButton(buttonElement, settings) {
+  buttonElement.classList.add(settings.inactiveButtonClass);
+  buttonElement.setAttribute('disabled', true);
+}
+
+function enebleSubmitButton(buttonElement, settings) {
+  buttonElement.classList.remove(settings.inactiveButtonClass);
+  buttonElement.removeAttribute('disabled')
+}
+
 function disableErrorMessages(inputElement) {
   inputElement.forEach(validMessage => validMessage.textContent = "");
 }
@@ -38,11 +48,9 @@ function hasInvalidInput(inputList) {
 
 function toggleButtonState(inputList, buttonElement, settings) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(settings.inactiveButtonClass);
-    buttonElement.setAttribute('disabled', true);
+    disableSubmitButton(buttonElement, settings);
   } else {
-    buttonElement.classList.remove(settings.inactiveButtonClass);
-    buttonElement.removeAttribute('disabled')
+    enebleSubmitButton(buttonElement, settings);
   }
 }
 

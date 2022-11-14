@@ -59,16 +59,14 @@ function openEditPopup() {
   openPopup(popupProfileEdit);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  buttonEditProfileSubmit.removeAttribute('disabled'); 
-  buttonEditProfileSubmit.classList.remove('popup__save-button_disabled'); 
+  enebleSubmitButton(buttonEditProfileSubmit, validateSettings);
   disableErrorMessages(errorMessages);
 }
 
 function openPlacePopup() {
   openPopup(popupPlace);
   formPlace.reset();
-  buttonAddPlaceSubmit.setAttribute('disabled', true); 
-  buttonAddPlaceSubmit.classList.add('popup__save-button_disabled'); 
+  disableSubmitButton(buttonAddPlaceSubmit, validateSettings);
   disableErrorMessages(errorMessages);
 }
 
