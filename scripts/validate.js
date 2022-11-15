@@ -18,6 +18,20 @@ function hideInputError(formElement, inputElement, settings) {
   inputElement.classList.remove(settings.inputErrorClass);
 }
 
+function disableSubmitButton(buttonElement, settings) {
+  buttonElement.classList.add(settings.inactiveButtonClass);
+  buttonElement.setAttribute('disabled', true);
+}
+
+function enableSubmitButton(buttonElement, settings) {
+  buttonElement.classList.remove(settings.inactiveButtonClass);
+  buttonElement.removeAttribute('disabled')
+}
+
+function disableErrorMessages(inputElement) {
+  inputElement.forEach(validMessage => validMessage.textContent = "");
+}
+
 function checkInputValidity(formElement, inputElement, settings) {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage, settings);
@@ -27,26 +41,16 @@ function checkInputValidity(formElement, inputElement, settings) {
 }
 
 function hasInvalidInput(inputList) {
-  return Array.from(inputList).some((inputElement) => {
+  return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   })
 }
 
-function disableErrorMessages() {
-  errorMessages.forEach(validMessage => validMessage.textContent = "");
-}
-
-function disableErrorInput(inputErrors) {
-  inputErrors.forEach(inputError => inputError.classList.remove('popup__input_error'));
-}
-
 function toggleButtonState(inputList, buttonElement, settings) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.setAttribute('disabled', true);
-    buttonElement.classList.add(settings.inactiveButtonClass);
+    disableSubmitButton(buttonElement, settings);
   } else {
-    buttonElement.removeAttribute('disabled')
-    buttonElement.classList.remove(settings.inactiveButtonClass);
+    enableSubmitButton(buttonElement, settings);
   }
 }
 

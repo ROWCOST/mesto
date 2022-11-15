@@ -24,7 +24,7 @@ const formEdit = document.forms['profile_edit'];
 const formPlace = document.forms['new-place'];
 
 const popups = document.querySelectorAll('.popup');
-const popupInputFields = document.querySelectorAll('.popup__input')
+const popupInputFields = document.querySelectorAll('.popup__input');
 const errorMessages = document.querySelectorAll('.popup__form-input-error');
 
 const cardTemplate = document.querySelector('#elementTemplate').content;
@@ -59,17 +59,15 @@ function openEditPopup() {
   openPopup(popupProfileEdit);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  toggleButtonState({validity: {valid: true}},buttonEditProfileSubmit,validateSettings);
-  disableErrorMessages();
-  disableErrorInput(popupInputFields);
+  enableSubmitButton(buttonEditProfileSubmit, validateSettings);
+  disableErrorMessages(errorMessages);
 }
 
 function openPlacePopup() {
   openPopup(popupPlace);
   formPlace.reset();
-  toggleButtonState(popupInputFields,buttonAddPlaceSubmit,validateSettings);
-  disableErrorMessages();
-  disableErrorInput(popupInputFields);
+  disableSubmitButton(buttonAddPlaceSubmit, validateSettings);
+  disableErrorMessages(errorMessages);
 }
 
 function openImage(image, caption) {
