@@ -26,19 +26,14 @@ const placeName = popupPlace.querySelector(".popup__input_content_place-name");
 const imageUrl = popupPlace.querySelector(".popup__input_content_image-url");
 
 const buttonEditProfile = document.querySelector(".profile__edit-button");
-const buttonEditProfileSubmit = popupProfileEdit.querySelector(".popup__save-button");
 
 const buttonAddPlace = document.querySelector(".profile__add-button");
-const buttonAddPlaceSubmit = popupPlace.querySelector(".popup__save-button");
 
 const formEdit = document.forms["profile_edit"];
 const formPlace = document.forms["new-place"];
 
 const popups = document.querySelectorAll(".popup");
-const popupInputFields = document.querySelectorAll(".popup__input");
-const errorMessages = document.querySelectorAll(".popup__form-input-error");
 
-const cardTemplate = document.querySelector("#elementTemplate").content;
 const cardsContainer = document.querySelector(".elements__table");
 
 function openPopup(popup) {
@@ -73,11 +68,13 @@ function openEditPopup() {
   openPopup(popupProfileEdit);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
+  editProfileFormValidator.enableValidation();
 }
 
 function openPlacePopup() {
   openPopup(popupPlace);
   formPlace.reset();
+  addPlaceFormValidator.enableValidation();
 }
 
 function openImage(image, caption) {
@@ -147,6 +144,3 @@ formPlace.addEventListener("submit", handlePlaceFormSubmit);
 
 const editProfileFormValidator = new FormValidator(validateSettings, popupProfileEdit);
 const addPlaceFormValidator = new FormValidator(validateSettings, popupPlace);
-
-editProfileFormValidator.enableValidation();
-addPlaceFormValidator.enableValidation();
