@@ -1,4 +1,13 @@
 import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+
+const validateSettings = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save-button",
+  inactiveButtonClass: "popup__save-button_disabled",
+  inputErrorClass: "popup__input_error",
+};
 
 const popupProfileEdit = document.querySelector(".popup_type_profile-edit");
 const popupPlace = document.querySelector(".popup_type_new-place");
@@ -52,7 +61,8 @@ function closeOnEscape(evt) {
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
     if (
-      evt.target.classList.contains("popup_active") || evt.target.classList.contains("popup__close-button")
+      evt.target.classList.contains("popup_active") ||
+      evt.target.classList.contains("popup__close-button")
     ) {
       closePopup(popup);
     }
@@ -63,15 +73,11 @@ function openEditPopup() {
   openPopup(popupProfileEdit);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  enableSubmitButton(buttonEditProfileSubmit, validateSettings);
-  disableErrorMessages(errorMessages);
 }
 
 function openPlacePopup() {
   openPopup(popupPlace);
   formPlace.reset();
-  disableSubmitButton(buttonAddPlaceSubmit, validateSettings);
-  disableErrorMessages(errorMessages);
 }
 
 function openImage(image, caption) {
@@ -90,7 +96,8 @@ function handleProfileFormSubmit(evt) {
 
 function handlePlaceFormSubmit(evt) {
   evt.preventDefault();
-  renderCard(placeName.value, imageUrl.value);
+  cardsContainer.prepend(createCard({ name: placeName.value, link: imageUrl.value }));
+  evt.target.reset();
   closePopup(popupPlace);
 }
 
@@ -137,3 +144,9 @@ buttonAddPlace.addEventListener("click", openPlacePopup);
 
 formEdit.addEventListener("submit", handleProfileFormSubmit);
 formPlace.addEventListener("submit", handlePlaceFormSubmit);
+
+const editProfileFormValidator = new FormValidator(validateSettings, popupProfileEdit);
+const addPlaceFormValidator = new FormValidator(validateSettings, popupPlace);
+
+editProfileFormValidator.enableValidation();
+addPlaceFormValidator.enableValidation();
