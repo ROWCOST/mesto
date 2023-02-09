@@ -42,7 +42,6 @@ export class FormValidator {
     }
   }
 
-
   _setEventListeners() {
     this._toggleButtonState();
     this._formElement.addEventListener("submit", (evt) => {
@@ -58,5 +57,10 @@ export class FormValidator {
 
   enableValidation() {
     this._setEventListeners();
+  }
+
+  resetValidation() {
+    this._toggleButtonState();
+    this._inputList.forEach((inputElement) => {this._hideInputError(inputElement)});
   }
 }

@@ -68,13 +68,13 @@ function openEditPopup() {
   openPopup(popupProfileEdit);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  editProfileFormValidator.enableValidation();
+  editProfileFormValidator.resetValidation();
 }
 
 function openPlacePopup() {
   openPopup(popupPlace);
   formPlace.reset();
-  addPlaceFormValidator.enableValidation();
+  addPlaceFormValidator.resetValidation();
 }
 
 function openImage(image, caption) {
@@ -144,3 +144,6 @@ formPlace.addEventListener("submit", handlePlaceFormSubmit);
 
 const editProfileFormValidator = new FormValidator(validateSettings, popupProfileEdit);
 const addPlaceFormValidator = new FormValidator(validateSettings, popupPlace);
+
+editProfileFormValidator.enableValidation();
+addPlaceFormValidator.enableValidation();
