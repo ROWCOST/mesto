@@ -2,7 +2,7 @@
 ------
 ## Описание проекта:
 
-Проектная работа шестого спринта Яндекс.Практикума на основе [макета](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1)
+Проектная работа седьмого спринта Яндекс.Практикума на основе [макета](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1)
 
 ------
 ### Используемые технологии:
